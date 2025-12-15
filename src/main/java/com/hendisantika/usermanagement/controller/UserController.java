@@ -51,6 +51,7 @@ public class UserController {
     public String index() {
         return "index";
     }
+    
 
     @GetMapping("/signup")
     public String signup(Model model) {
