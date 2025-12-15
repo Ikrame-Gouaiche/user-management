@@ -64,13 +64,8 @@ jobs:
 
         # Push Docker image to DockerHub or other container registry
       - name: Log in to DockerHub
-        shell: powershell
         run: |
-          $password = "${{ secrets.DOCKER_PASSWORD }}"
-          $password | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-      - name: Push Docker image
-        run: |
-          docker push carikk/quality-gate:latest
+          docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
 
 
       # Set up kubeconfig from secret
