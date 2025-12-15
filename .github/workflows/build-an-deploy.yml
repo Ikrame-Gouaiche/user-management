@@ -67,6 +67,10 @@ jobs:
         run: |
           docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
 
+      - name: Push Docker image
+        run: |
+          docker push ikramegouaiche212003/user-management:latest
+
 
       # Set up kubeconfig from secret
       - name: Set up kubeconfig
