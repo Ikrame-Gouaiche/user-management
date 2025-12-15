@@ -57,7 +57,7 @@ jobs:
         # Build Docker image
       - name: Build Docker image
         run: |
-          docker build -t carikk/quality-gate:latest .
+          docker build -t ikramegouaiche212003/user-management:latest .
 
           
 
