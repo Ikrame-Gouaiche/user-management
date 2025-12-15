@@ -74,8 +74,12 @@ jobs:
 
       # Set up kubeconfig from secret
       - name: Set up kubeconfig
+        shell: powershell
         run: |
-          echo "${{ secrets.KUBECONFIG_CONTENT }}" > $HOME/.kube/config
+          $kubeDir = Join-Path $HOME ".kube"
+          New-Item -ItemType Directory -Force -Path $kubeDir | Out-Null
+          $configPath = Join-Path $kubeDir "config"
+          "${{ secrets.KUBECONFIG_CONTENT }}" | Out-File -FilePath $configPath -Encoding utf8
           kubectl config use-context docker-desktop  # Set context to docker-desktop
           kubectl config set-context --current --namespace=ensakh
 
